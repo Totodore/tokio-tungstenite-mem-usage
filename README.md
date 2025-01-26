@@ -2,7 +2,7 @@
 
 The source code is the official ping/pong example from the tokio-tungstenite repository.
 
-The results are obtained with [`heaptrack`](https://github.com/KDE/heaptrack), a heap memory profiler.
+The results are obtained with [`heaptrack`](https://github.com/KDE/heaptrack), a heap memory profiler and [`k6`](https://k6.io/open-source/) a load tester.
 
 ## tokio-tungstenite 0.24.0
 * Calls to allocation functions: 341,152 (3,694/s)
@@ -10,6 +10,7 @@ The results are obtained with [`heaptrack`](https://github.com/KDE/heaptrack), a
 * Peak heap memory usage: 106.1MB
 * Peak RSS: 119.6MB
 * Total runtime: 1min32s
+
 [heaptrack 0.24 file](heaptrack-tokio-tungstenite-0.24.gz)
 
 ![heaptrack graph 0.24](heaptrack_0.24.png)
