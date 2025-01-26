@@ -3,6 +3,7 @@ use std::io::Error;
 use futures_util::{future, StreamExt, TryStreamExt};
 use log::info;
 use tokio::net::{TcpListener, TcpStream};
+use tokio_tungstenite::tungstenite::protocol::WebSocketConfig;
 
 #[tokio::main]
 async fn main() -> Result<(), Error> {
@@ -27,7 +28,8 @@ async fn accept_connection(stream: TcpStream) {
         .expect("connected streams should have a peer address");
     info!("Peer address: {}", addr);
 
-    let ws_stream = tokio_tungstenite::accept_async(stream)
+    let config = WebSocketConfig::default().read_buffer_size(64 * 1024);
+    let ws_stream = tokio_tungstenite::accept_async_with_config(stream, Some(config))
         .await
         .expect("Error during the websocket handshake occurred");
 
